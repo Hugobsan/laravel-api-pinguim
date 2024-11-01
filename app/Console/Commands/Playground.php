@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Services\SportScore\SportScoreService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
@@ -26,10 +27,8 @@ class Playground extends Command
      */
     public function handle(): int
     {
-        $response = Http::withHeaders([
-            'x-rapidapi-host' => 'sportscore1.p.rapidapi.com',
-            'x-rapidapi-key' => 'b037037f6emsh18c2a0311117778p1edceejsn7ce82e35c7eb',
-        ])->get('https://sportscore1.p.rapidapi.com/sports/1/teams?page=1');
+        $service = new SportScoreService();
+        $response = $service->sports()->get();
         
         dd($response->json());
         return 1;
