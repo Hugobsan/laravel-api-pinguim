@@ -28,9 +28,7 @@ class Playground extends Command
     public function handle(): int
     {
         $service = new SportScoreService();
-        $response = $service->sports()->get();
-        
-        $json = $response->json();
+        $json = $service->sports()->get();
 
         dd($json);
 
