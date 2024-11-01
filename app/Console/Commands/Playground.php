@@ -30,7 +30,10 @@ class Playground extends Command
         $service = new SportScoreService();
         $response = $service->sports()->get();
         
-        dd($response->json());
+        $json = $response->json();
+
+        dd($json);
+
         return 1;
     }
 }
